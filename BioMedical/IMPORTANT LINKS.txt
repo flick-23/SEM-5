@@ -1,0 +1,20 @@
+IMPORTANT LINKS AND REPO's :
+
+https://physicsworld.com/a/ultrafast-photon-detectors-enable-reconstruction-free-medical-imaging/
+http://www.cancer.gov
+https://brain-development.org/ixi-dataset/
+http://braintumorsegmentation.org/
+https://research.google/teams/brain/
+https://www.microsoft.com/en-us/research/research-area/medical-health-genomics/
+https://www.microsoft.com/en-us/research/theme/health-intelligence/
+https://www.rsna.org/education/ai-resources-and-training/ai-image-challenge/brain-tumor-ai-challenge-2021
+https://github.com/anilgavade/3d-mri-brain-tumor-segmentation-using-autoencoder-regularization
+https://github.com/anilgavade/nnUNet
+https://github.com/topics/mri-segmentation
+https://github.com/anilgavade/Unsupervised_Anomaly_Detection_Brain_MRI
+https://www.linkedin.com/posts/peter-schardt_artificialintelligence-healthcare-innovation-activity-6870999260549148672-MLBF
+https://cs231n.github.io/neural-networks-1/
+https://youtu.be/gQg-B4RS3ZM
+https://youtu.be/p2Vt5fdggwk
+https://youtu.be/0Rpbhfav7tE
+https://youtu.be/BVwXF50mkB4
