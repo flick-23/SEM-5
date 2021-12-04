@@ -1,0 +1,91 @@
+#include <iostream>
+#include <cstdio> //this is included for perror() function
+#include <unistd.h>
+#include <limits.h>
+
+using namespace std;
+
+int main()
+{
+	int choice;	
+
+	cout<<"Menu:\n1)Compile time limits\n2)Run time limits"<<endl;
+	cout<<"Enter your choice:";
+	cin>>choice;
+
+	switch(choice)
+	{
+		case 1:
+		cout<<"Limits at compile time:"<<endl;
+		#ifdef _POSIX_CHILD_MAX
+			cout<<"Maximum number of child processes:"<<_POSIX_CHILD_MAX;
+		#else
+			cout<<"Macro _POSIX_CHILD_MAX not defined";
+		#endif
+		cout<<endl;
+
+		#ifdef _POSIX_PATH_MAX
+			cout<<"Maximum path length:"<<_POSIX_PATH_MAX;
+		#else
+			cout<<"Macro _POSIX_PATH_MAX not defined";
+		#endif
+		cout<<endl;
+
+		#ifdef _POSIX_NAME_MAX
+			cout<<"Maximum number of characters in a file name:"<<_POSIX_NAME_MAX;
+		#else
+			cout<<"Macro _POSIX_NAME_MAX not defined";	
+		#endif
+		cout<<endl;
+
+		#ifdef _POSIX_OPEN_MAX
+			cout<<"Maximum number of open files per process:"<<_POSIX_OPEN_MAX;
+		#else
+			cout<<"Macro _POSIX_OPEN_MAX not defined";
+		#endif
+		cout<<endl;
+
+		break;
+
+		case 2:
+		int res;
+		
+		cout<<"Limits at runtime:"<<endl;
+		if((res=sysconf(_SC_CLK_TCK))==-1)
+			perror("sysconf");
+		else
+			cout<<"Number of clock ticks:"<<res;
+		cout<<endl;
+
+		if((res=sysconf(_SC_CHILD_MAX))==-1)
+			perror("sysconf");
+		else
+			cout<<"Maximum number of child processes:"<<res;
+		cout<<endl;
+
+		if((res=pathconf("/",_PC_PATH_MAX))==-1)
+			perror("pathconf");
+		else
+			cout<<"Maximum path length:"<<res;
+		cout<<endl;
+	
+		if((res=fpathconf(0,_PC_NAME_MAX))==-1)
+			perror("fpathconf");
+		else
+			cout<<"Maximum number of characters in a file name:"<<res;
+		cout<<endl;
+
+		if((res=sysconf(_SC_OPEN_MAX))==-1)
+			perror("sysconf");		
+		else
+			cout<<"Maximum number of open files per process:"<<res;
+		cout<<endl;
+	
+		break;
+
+		default:
+		cout<<"Invalid choice!!!";
+	}
+	cout<<endl;
+	return 0;
+}
