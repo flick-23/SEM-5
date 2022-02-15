@@ -1,0 +1,9 @@
+1) TCP segment structure
+2) Multiplexing Demultiplexing
+3) Protocols-> go back and selective repeat
+4) ipv6 and ipv4
+5) virtual network and datagram network
+6) components of router
+7) network address translation
+8) Everything about TCP
+9) No numericals
