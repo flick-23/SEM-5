@@ -1,0 +1,3 @@
+command is vi filename.extension
+to save shift:wq
+or shit zz

@@ -1,0 +1,3 @@
+Hello everyone welcome to UNIX lab
+this is the file needed for execution of third term work in where we are locking the last 100 bytes of file 
+enjoy programming
