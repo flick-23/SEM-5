@@ -5,8 +5,7 @@ using namespace std;
 #include<unistd.h>
 int main()
 {
-	cout<<"Name: Vivek Raju Jadhav"<<endl;
-	cout<<"USN: 2GI19CS185"<<endl;
+
 	#ifdef _POSIX_JOB_CONTROL
 		cout<<"system supports job control\n";
 	#else
