@@ -1,36 +1,44 @@
-#include <iostream>
 #include <stdlib.h>
-
+#include <iostream>
+#include <unistd.h>
 using namespace std;
-// extern char **environ
-int main()
+int main(int argc, char *argv[], char *envp[])
 {
-
-	/*for(int i=0;environ[i]!=(char*)0;i++)
+	extern char **environ;
+	int choice, i;
+	char *env;
+	cout << "\nChoose the damn method - \n1.Envp\n2.Environ\n3.Getenv\n";
+	cin >> choice;
+	switch (choice)
 	{
-		cout<<environ[i]<<"\n";
+	case 1:
+		for (i = 0; envp[i] != (char *)0; i++)
+		{
+			cout << "\n"
+				 << envp[i];
+		}
+		break;
+	case 2:
+		for (i = 0; environ[i] != (char *)0; i++)
+		{
+			cout << "\n"
+				 << environ[i];
+		}
+		break;
+	case 3:
+		env = getenv("HOME");
+		cout << "\nHOME:" << env;
+		env = getenv("SHELL");
+		cout << "\nSHELL:" << env;
+		env = getenv("TERM");
+		cout << "\nTERM:" << env;
+		env = getenv("USER");
+		cout << "\nUSER:" << env;
+		env = getenv("PATH");
+		cout << "\nPATH:" << env;
+		break;
+	default:
+		printf("\nInvalid input dumbass!");
+		break;
 	}
-	return 0;
-
-	/*for(int i=0;envp[i]!=(char*)0;i++) include command line arguments
-	{
-		cout<<envp[i]<<"\n";
-	}
-	return 0;*/
-
-	char *env = getenv("HOME");
-	cout << "HOME " << env << "\n";
-
-	env = getenv("SHELL");
-	cout << "SHELL " << env << "\n";
-
-	env = getenv("TERM");
-	cout << "TERM " << env << "\n";
-
-	env = getenv("USER");
-	cout << "USER " << env << "\n";
-
-	env = getenv("PATH");
-	cout << "PATH " << env << "\n";
-	return 0;
 }

@@ -1,36 +1,29 @@
-#define _POSIX_SOURCE
-#define _POSIX_C_SOURCE 199309L
-#include <iostream>
-#include <cstdio>
+// race condition
+#include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
-using namespace std;
-
 static void charatatime(char *);
-
 int main()
 {
-	pid_t pid;
-	int i;
+	int pid, i;
 	for (i = 0; i < 5; i++)
 	{
-		pid = fork();
-		if (pid < 0)
-		{
-			cout << "fork error";
+		if (pid = fork() < 0)
+		{ // error
+			printf("\nFork error\n");
 		}
-		else if (pid == 0)
+		else if (pid == 0) // child
 		{
-			charatatime("output from child\n");
+			charatatime("I am a child\n");
 		}
-		else
+		else // parent
 		{
-			charatatime("output from parent\n");
+			charatatime("I am parent\n");
 		}
 	}
-	return 0;
+	_exit(0);
 }
-
-static void charatatime(char *str)
+void charatatime(char *str)
 {
 	char *ptr;
 	int c;

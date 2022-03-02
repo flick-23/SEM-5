@@ -1,22 +1,22 @@
-#include <stdio.h>
+// Avoid zombie process
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
-
 int main()
 {
-	int pid;
-	pid = fork();
+	int pid = fork();
 	if (pid == 0)
 	{
+		// first child
 		pid = fork();
 		if (pid == 0)
-		{
+		{ // second child
 			sleep(1);
-			printf("Second child: My parent PID is %d\n", getppid());
+			printf("\nSecond child : My Parent PID is %d\n", getppid());
 		}
 	}
 	else
-	{
+	{ // parent process
 		wait(NULL);
 		sleep(2);
 		system("ps -o pid,ppid,state,tty,command");

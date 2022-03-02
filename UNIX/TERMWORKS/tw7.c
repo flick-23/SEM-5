@@ -1,20 +1,19 @@
+// Create zombie process and then calls system to execute ps command, verify that the process is zombie
 #include <stdlib.h>
 #include <stdio.h>
-#include <sys/types.h>
 #include <unistd.h>
 int main()
 {
-	pid_t child_pid; /*create a child process*/
-	child_pid = fork();
-
-	if (child_pid == 0)
+	pid_t pid;
+	if ((pid = fork()) < 0)
 	{
-		exit(0); /*this is the child process. exit immediately*/
+		perror("\nFork error!");
 	}
-	else
+	else if (pid == 0) // child
 	{
-		sleep(3); /*this is the parent process.sleep for 3 units of time*/
-		system("ps -e -o pid,ppid,stat,cmd");
+		_exit(0);
 	}
-	return 0;
+	sleep(4); // parent
+	system("ps -o pid,ppid,state,tty,command");
+	_exit(0);
 }

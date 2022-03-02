@@ -1,23 +1,21 @@
-#include <iostream>
+#include <stdio.h>
 #include <unistd.h>
-using namespace std;
-
+#include <stdlib.h>
 int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
-		cout << "Usage ./a.out sourcefile destination file\n";
+		printf("\nUsage: ./a.out <destination file> <source_file>\n");
 		return 0;
 	}
 	if (link(argv[1], argv[2]) == -1)
 	{
-		cout << "Cant link\n";
+		printf("\nLink Error!\n");
 		return 1;
 	}
 	else
 	{
-		cout << "Files have been linked\n";
+		printf("\nHard link successfull!\n");
 		return 0;
 	}
-	return 0;
 }

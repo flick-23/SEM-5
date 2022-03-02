@@ -1,3 +1,4 @@
+// make use of mkfifo, read, write
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -11,26 +12,31 @@ int main()
 {
 	int readfd, writefd, fd;
 	ssize_t n;
-	char buff[512];
+	char buf[512];
 	if (mkfifo(FIFO1, PERMS) < 0)
-		printf("cant create FIFO files\n");
+		printf("\nCant read FIFO files");
 	if (mkfifo(FIFO2, PERMS) < 0)
-		printf("cant create FIFO files\n");
-	printf("waiting for Connection request");
+		printf("\nCan't read FIFO files");
+
+	printf("\nWaiting for connection from the client");
 	readfd = open(FIFO1, O_RDONLY, 0);
 	writefd = open(FIFO2, O_WRONLY, 0);
-	printf("Connection established,,,\n");
-	read(readfd, fname, 255);
-	printf("Client has requested file %s\n", fname);
+	printf("\nConnection established!");
+
+	read(readfd, fname, 256);
+	printf("\nClient has requested file %s ", fname);
+
 	if ((fd = open(fname, O_RDWR)) < 0)
 	{
-		strcpy(buff, "File does not exist...\n");
-		write(writefd, buff, strlen(buff));
+		strcpy(buf, "File does not exist!");
+		write(writefd, buf, strlen(buf));
 	}
 	else
 	{
-		while ((n = read(fd, buff, 512)) > 0)
-			write(writefd, buff, n);
+		while ((n = read(fd, buf, 512)) > 0)
+		{
+			write(writefd, buf, n);
+		}
 	}
 	close(readfd);
 	unlink(FIFO1);
